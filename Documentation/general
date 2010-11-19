@@ -1,0 +1,226 @@
+Open DC Hub
+
+Installation:
+Follow the generic installation instructions in INSTALL. To build without
+Perl script support, add the argument --disable-perl to configure.
+
+If you want to be able to switch user on startup, use the 
+--enable-switch_user argument to configure. 
+
+
+More information about how to write scripts for opendchub is contained in the
+file scriptdoc.
+
+
+
+The command line arguments available are:
+
+-d          : Makes the hub print the log to the console instead of running in 
+	      the background.
+-h  	    : Prints a brief help and exits.
+--version   : Prints the version of the program.
+-l <logfile>: Sets the path to the logfile.
+-s          : Uses syslog instead of a logfile.
+-w  <path>  : Sets the path to the working directory. This directory will
+    	      contain a tmp directory and the .opendchub directory with
+	      the config files.
+	      
+These options are also available if you have enabled switch user mode:
+
+-u <user>   : Run as this user.
+-g <group>  : Run as this group.
+
+
+
+Administration through telnet:
+
+Open DC Hub is a server that is run as a daemon. That means it runs in the
+background and does not have a user interface. Instead, it waits for
+connections on a port that is dedicated for administration. That means that
+the server can be administrated both from the local host and remotely. The
+admin port is by default 53696.
+If you run it with the -d option, it will output to the console instead of
+printing to the log file. This option is meant for testing purpose only, since
+some characters can make your terminal unusable.
+So, for example, to start managing the hub run on your own computer you would
+do:
+"telnet 127.0.0.1 53696"
+You will then be prompted for the administrators password which was set the
+first time you ran the program. All commands that are used to administer the
+hub start with a '$' and are ended with a '|'.
+
+
+
+Administration through chat:
+
+It is also possible to administer the hub through the chat in Direct Connect.
+To do that, a user has to be registered as an OP Admin, i.e, the op digit has
+to be set to 2. The commands are the same as follows, with the difference 
+that they start with a '!' instead of a '$' and they shouldn't be terminated
+with a '|'.
+
+
+
+Here is a description of the admin commands. These commands also works in the 
+chat. To use them in chat, replace the '$' with at '!' and skip the '|':
+
+$adminpass <password>|
+Sends the administrations password. This has to be sent before any other 
+commands. This command does NOT work in chat for security reasons. A 
+user must be registered as an Op Admin before the user can use the
+admin commands in chat.
+
+$set <variable> <value>|
+Sets a value in the config file. The config file is located in the
+.opendchub directory, which is located in the root of your home directory.
+The variables are explained in configfiles, in the Documentation directory. The
+program must be run once first to create the config file.
+The motd is placed in a file of it's own. To change the motd, use "$Set motd".
+Do not use the '|' sign inside the motd. You won't be able to put them in there
+with the $Set command, and if you edit the motd file by hand, '|' signs will
+confuse the clients.
+When setting the min_share value, it's possible to specify the minimum share
+in Bytes, MegaBytes and GigaBytes. For example, to set the minimum share to
+500 MegaBytes, you would type:
+$set min_share 500 MB|
+And to set it to 5 GigaBytes:
+$set min_share 5 GB|
+
+$ban <ip or hostname> <time>|
+Adds an entry to the banlist. The entry can be an ip or a subnet, specified 
+as: %d.%d.%d.%d/%d . If reverse_dns is set to 1, it's also possible to ban
+hostnames. For hostnames, the wildcard character '*' is allowed. This is 
+described more in detail in the file configfiles.
+'time' indicates for how long the user should be banned. If given with an 
+integer only, 'time' is specified in seconds. By adding a 'm', 'h' or 'd', it
+will be in minutes, hours or days. For example, to ban a person for 30
+minutes, do: $ban 'ip or hostname' 30m|
+To ban a user permanently, just skip <time>.
+
+$allow <ip or hostname> <time>|
+Adds an entry to the allowlist. This file works like the opposite of 
+banlist, i.e, the entries in this file are allowed to the hub. Explained more 
+detailed in configfiles.
+
+$nickban <nickname> <time>|
+Adds an entry to the nickbanlist. The wildcard character '*' is allowed. To
+ban a nick that contains a '*', it has to be escaped with a '\'. Explained
+more in detail in configfiles.
+
+$getbanlist|
+Displays the banlist file.
+
+$getallowlist|
+Displays the allowlist file.
+
+$getnickbanlist|
+Displays the nickbanlist file.
+
+$unban <ip or hostname>|
+Removes an entry from the banlist file. The entry in the file must be an 
+exact match of the one provided in the command.
+
+$unallow <ip or hostname>|
+Removes an entry from the allowlist file.
+
+$unnickban <nickname>|
+Removes an entry from the nickbanlist file.
+
+$addreguser <nickname> <password> <op>|
+Adds a user the the regfile. if 'op' is 1, the user is op, which allows user 
+to use the dedicated op commands, for example $Kick. If 'op' is 2, the user
+also gets privileges to administer the hub through the chat. If 'op is 0, 
+the user is an ordinary registered user with no special privileges.
+
+$getreglist|
+Displays the reglist.
+
+$removereguser <nickname>|
+Removes a user from the reglist.
+
+$addperm <nick> <permission>|
+Adds permissions to regular Op:s. 'permission' can be one of the following:
+BAN_ALLOW, USER_INFO, MASSMESSAGE, USER_ADMIN
+BAN_ALLOW lets Op:s add and remove entries from the ban-, allow- and
+nickbanlist. It also lets them retrieve the lists. USER_INFO lets Op:s
+retrieve a users hostname and ip. MASSMESSAGE lets Op:s send massmessages.
+USER_ADMIN lets Op:s add and remove registered users and retrieve the reglist.
+
+$showperms <nick>|
+Shows the permissions for a certain nick. 'nick' has to be the nickname of
+a registered Op.
+
+$removeperm <nick> <permission>|
+Removes one of the permissions described above from a user.
+
+$addlinkedhub <hubip> <port>|
+Adds a hub to the linked hub list. The hub is linked with the hubs on this
+list, which makes it possible for users to search for file and connect to
+users on other hubs. 'port' is the port on which the linked hub is run.
+
+$getlinklist|
+Displays the linked hubs file.
+
+$removelinkedhub <hubip> <port>|
+Removes a hub from the linked hub list.
+
+$getconfig|
+Displays the config file.
+
+$getmotd|
+Displays the motd file.
+
+$quitprogram|
+Terminates the program. Has the same effect as sending term signal to the 
+process, which also makes the hub shutting down cleanly.
+
+$exit|
+Disconnects from the hub.
+
+$redirectall <ip or hostname>|
+Redirects all users to 'ip or hostname'.
+
+$gethost <nickname>|
+Displays the hostname of user with nickname 'nick'.
+
+$getip <nickname>|
+Displays the ip of user with nickname 'nick'.
+
+$massmessage <message>|
+Sends a private message to all logged in users.
+
+$reloadscripts|
+Kills the current running scripts and loads the ones in the script
+directory.
+
+$commands|
+Displays all available admin commands.
+
+
+
+Some commands for ordinary users that also works for administrator.
+These commands do not work in chat, since they should be implemented by the
+client anyway:
+
+$GetNickList|
+Returns a list of all users connected to the hub in the form:
+$NickList 'user1'$$'user2'$$...'usern'$$||OpList 'op1'$$'op2'$$...'opn'||
+
+$GetINFO 'nickname' Administrator|
+Displays the user info of user with nick 'nickname'.
+
+$To: 'nickname' From: Administrator $<Administrator> 'message string'|
+Sends a private message from administrator to user.
+
+<Administrator> 'chat string'|
+This is the only command that does not start with the '$'. It sends a 
+message to the public chat. Note that the nickname of the administrator is 
+"Administrator". It can't be changed.
+
+$Kick 'nickname'|
+Kicks the user with nick 'nickname'.
+
+$OpForceMove $Who:'nick':$Where:'host or ip'$Msg:'message'|
+Redirects user with 'nick' to the hostname or ip and displays the 
+message 'message' to the redirected user. This is the only admin command
+that is case sensitive.

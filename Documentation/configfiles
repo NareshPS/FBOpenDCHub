@@ -1,0 +1,203 @@
+Here follows an explanation of all the config files, and their variables. 
+Editing the configuration files by hand is not advisable. Instead, use the 
+proper command to add, remove or change entries in the files.
+
+------------------------------------------------------------------------------
+
+config:
+This is an example of a config file. The different variables are explained and
+these are all changed using the set command, either from an administrators 
+login or from chat as an op admin.
+
+# Hub name. Maximum length is 25 chars.
+hub_name = "Open DC Hub"
+
+# Maximum users in hub.
+max_users = 1000
+
+# This message is displayed to the user if hub is full.
+hub_full_mess = "Sorry, this hub is full at the moment"
+
+# Description of hub. Maximum 55 chars, no newlines.
+hub_description = "A Unix/Linux Direct Connect Hub"
+
+# Minimum share in Bytes.
+min_share = 0
+
+# Admin password, maximum 50 characters.
+admin_pass = "admin_pass"
+
+# Default password, maximum 50 characters.
+# If registered_only (see below) is set to 0 then regular/non-registered
+# users are prompted for the "default" password
+default_pass = ""
+
+# Hub linking pass, maximum 50 characters. This password must match the
+# linking pass of the hubs on the link list to make multisearch possible.
+link_pass = "link_pass"
+
+# Users before the process forks. To serve an amount of users that is larger
+# than the number returned from getdtablesize(), a fork is necessary.
+users_per_fork = 1000
+
+# The port on which we listen for connections. You have to be root to use one
+# below 1024. Also, changes won't take effect until the hub is restarted.
+listening_port = 4012
+
+# Port for remote or local administration of hub. To disable the admin port, 
+# set it to 0.
+admin_port = 53696
+
+# If set to 0 and admin_port is non-zero then connections to the admin port
+# can come from anyplace.  If set to 1, the admin port will only be accessable
+# from localhost. This option doesn't take effect until the hub is restarted.
+admin_localhost = 0
+
+# Do upload to public hublist. 1 for yes, 0 for no. If the hub fails to
+# determine the hostname, this will automatically be set to 0.
+hublist_upload = 1
+
+# Host for public hub list.
+public_hub_host = "vandel405.dynip.com"
+
+# Hostname to upload to public hublist. Useful if you have a dynamic ip.
+hub_hostname = "your_hostname_or_ip"
+
+# Minimum version of client. If this is set to nothing, client version won't
+# be checked. Most users would set this to 1,0091 (comma, not dot!) if set
+# at all.
+min_version = "1,0091"
+
+# Host to redirect users to if hub is full. If no host is set, redirection
+# won't occur.
+redirect_host = "redirect_host_or_ip"
+
+# If this option is set to 1, only registered users are allowed to the hub
+registered_only = 0
+
+# If this is set to 1, the key sent from the client as a reply to the
+# Lock string will be validated. If set to 0, the key won't be checked
+# at all.
+check_key = 0
+
+# When this variable is 1, reverse DNS lookups are made on newly connected
+# clients and the hostnames are set. This is good if you want to ban/allow
+# clients by hostname, and not ip. If you don't need that feature, or if
+# you have a slow connection to your DNS server, you probably want to set
+# this to 0, since that will improve performance of the hub.
+reverse_dns = 0
+
+# When this option is set to 1, the entries on the banlist will override
+# those on the allowlist. This means that an entry on the banlist will be
+# banned even if it's on the allowlist. Nor will any users that aren't
+# on the allowlist be allowed. This would usually be used if you would
+# like to allow only users of a certain domain to the hub.
+ban_overrides_allow = 0
+
+# This variable decides the verbosity of the log file. The lowest value
+# is 0 (no logging at all) and the highest value is 5 (all possible logging).
+verbosity = 4
+
+# If this variable is set to 1, a user who doesn't meet the minimum share 
+# requirement will be redirected to the address specified in redirect_host.
+redir_on_min_share = 1
+
+# If set to 1, the hub will output it's log to syslog instead of the log file
+# in .opendchub/log
+syslog_enable = 0
+
+# When users send a search to the hub, they include their own nickname or ip.
+# If this one is set, the hub won't mind if the attached ip doesn't match the
+# ip the user is connected to, given that the user is connected from an ip
+# in one of the known internal ip ranges.
+searchcheck_exclude_internal = 1
+
+# If this one is set, the hub doesn't check if the ip attached with the search
+# command matches the one the user is connected to at all.
+searchcheck_exclude_all = 0
+
+# This is the time in minutes the user will be banned after a kick.
+kick_bantime = 5
+
+# This is the time in seconds that has to pass between to searches from a
+# user.
+searchspam_time = 5
+
+# This is the maximum length allowed for a users email. Setting it to 0 will
+# disable the check of the email length and allow any length, which is
+# probably a bad idea.
+max_email_len = 50
+
+# The maximum length of a users description, works the same way as
+# max_email_len.
+max_desc_len = 100
+
+# Enable encryption of the passwords stored in the reglist.
+crypt_enable = 1
+
+------------------------------------------------------------------------------
+
+banlist:
+The banlist is a list of ip:s/hostnames that are not allowed in the hub.
+An entry can be a single ip, a subnet, a hostname or a part of a hostname with
+one or several wildcards ('*'). To be able to ban hostnames, reverse_dns has
+to be set to 1. Here follows a few examples:
+
+100.100.100.100        bans that address, and that address only.
+100.100.100.0/24       bans 100.100.100.0 - 100.100.100.255
+100.100.0.0/16	       bans 100.100.0.0 - 100.100.255.255
+badcom.baddomain.com   bans that hostname, and that hostname only.
+*bad*com	       bans all hostnames that contains "bad" and end with
+		       "com".
+*.net		       bans all hostnames that ends with ".net".
+     
+To add and remove entries from the banlist, use the ban and unban commands.
+
+------------------------------------------------------------------------------
+
+allowlist:
+If ban_overrides_allow is set to 0, The entries on this list overrides
+those on the banlist. If you want to ban a whole domain except for one or
+several users, you  would put the domain name in the banlist and the allowed
+users here. For example, "*.baddomain.com" in the banlist and "*goodguy*" here
+would allow "goodguy.baddomain.com" but ban all other hosts on baddomain.com.
+However, if ban_overrides_allow is set to 1, it will work the other way
+around. Then, _only_ the entries on the allowlist will be allowed and if they
+are on the banlist, they will be banned even if they are on the allowlist.
+So, if you only want users on the domain "gooddomain.com" to have access to the
+hub, you would set ban_overrides_allow to 1 and put "*.gooddomain.com" here.
+And if you then want to ban badguy.gooddomain.com, you would put "*badguy*"
+in the banlist. To allow hostnames and not only ips, reverse_dns has to be set
+to 1. To add and remove entries from the allowlist, use the allow and unallow
+commands.
+
+------------------------------------------------------------------------------
+
+reglist:
+A list of registered users in the form <user_name> <password> <opdigit>, where
+opdigit is 2 for op admin, 1 for op and 0 for regular registered users.
+Scripts which are registered in the nicklist will also be registered here with
+a random password. To add and remove users from this list, use the addreguser
+and removereguser command.
+
+------------------------------------------------------------------------------
+
+linklist:
+List of linked hubs, or multihubs, in the form <hub_ip> <port>
+These are the hubs to which multisearches are forwarded. Use the addlinkedhub
+and removelinkedhub commands to edit this list.
+
+------------------------------------------------------------------------------
+
+op_permlist:
+Contains entries of extra permissions for registered ops. 
+
+------------------------------------------------------------------------------
+
+nickbanlist:
+Contains entries of nicknames that are banned. The bans are case sensitive.
+The '*' character can be used as a wildcard. To ban a nick that contains a 
+'*' or a '\', it has to be escaped with a '\'.
+For example, the banentry "bad*nick" bans all nicknames that start with "bad"
+and end with "nick". Banentry "ba\\dni\*ck" bans "ba\dni*ck", and only 
+"ba\dni*ck".

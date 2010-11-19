@@ -1,0 +1,142 @@
+# This is a script that tests the different functions available. To run it, 
+# rename the filename so that it ends with '.pl'.
+
+$botname = "FuncTestBot";
+
+sub main()
+{
+    odch::register_script_name($botname);
+}
+
+sub data_arrival()
+{
+    my($user, $data) = @_;
+    if($data =~ /\$To: $botname/)
+      {
+	  if($data =~ /mynick/)
+	    {
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your nick is $user.|");
+	    }
+	  if($data =~ /mytype/)
+	    {
+		my($type) = odch::get_type($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your type is $type.|");
+	    }
+	  if($data =~ /myip/)
+	    {
+		my($ip) = odch::get_ip($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your ip is $ip.|");
+	    }
+	  if($data =~ /myhost/)
+	    {
+		my($host) = odch::get_hostname($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your host is $host.|");
+	    }
+	  if($data =~ /myversion/)
+	    {
+		my($version) = odch::get_version($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your version is $version.|");
+	    }
+	  if($data =~ /mydesc/)
+	    {
+		my($desc) = odch::get_description($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your description is $desc.|");
+	    }
+	  if($data =~ /myconn/)
+	    {
+		my($conn) = odch::get_connection($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your conn is $conn.|");
+	    }
+	  if($data =~ /myflag/)
+	    {
+		my($flag) = odch::get_flag($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your flag is $flag.|");
+	    }
+	  if($data =~ /myshare/)
+	    {
+		my($share) = odch::get_share($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your share is $share.|");
+	    }
+	  if($data =~ /myban/)
+	    {
+		my($ban) = odch::check_if_banned($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your ban is $ban.|");
+	    }
+	  if($data =~ /myallow/)
+	    {
+		my($allow) = odch::check_if_allowed($user);
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Your allow is $allow.|");
+	    }
+	  if($data =~ /kickme/)
+	    {
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Kicking you...|");
+		odch::kick_user($user);
+	    }
+	  if($data =~ /moveme/)
+	    {
+		odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> Moving you.|");
+		odch::force_move_user($user, "www.disney.com");
+	    }
+	  if($data =~ /getfork/)
+	  {		
+	      my($fork) = odch::get_variable("users_per_fork");
+	      odch::data_to_user($user, 
+				 "\$To: $user From: $botname \$<$botname> Users_per_fork is $fork.|");
+	  }
+	  if($data =~ /setfork/)
+	  {		 
+	      odch::set_variable("users_per_fork", "6");
+	  }
+	  if($data =~ /addban/)
+	  {		
+	      odch::add_ban_entry("blahaj");
+	  }
+	  if($data =~ /removeban/)
+	  {		
+	      odch::remove_ban_entry("blahaj");
+	  }
+		
+	  if($data =~ /addreg/)
+	  {
+	      odch::add_reg_user("bobo", "bobo", 1);
+	  }
+	  if($data =~ /removereg/)
+	  {
+	      odch::remove_reg_user("bobo");
+	  }
+	  
+	  if($data =~ /countusers/)
+	     {
+		 my($count) = odch::count_users();
+		 odch::data_to_user($user, 
+		 "\$To: $user From: $botname \$<$botname> User count is $count.|");
+	     }
+	     
+	  if($data =~ /getshare/)
+	     {
+		 my($share) = odch::get_variable("total_share");
+		 odch::data_to_user($user, 
+		 "\$To: $user From: $botname \$<$botname> Total share is $share.|");
+	     }
+	     
+	  if($data =~ /myreg/)
+	     {
+		 my($isregged) = odch::check_if_registered($user);
+		 odch::data_to_user($user, 
+		 "\$To: $user From: $botname \$<$botname> Your reg status is $isregged.|");
+	     }
+      }
+}

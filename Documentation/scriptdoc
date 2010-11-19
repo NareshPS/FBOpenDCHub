@@ -1,0 +1,255 @@
+Open DC Hub accepts scripts written in the Perl language. For hints and
+examples, check out the sample scripts. For info on how to program in Perl, 
+check out www.perl.com or www.perldoc.com.
+
+All files in the .opendchub/scripts directory which have filenames that end 
+with .pl will be parsed as scripts on startup and every time you run the
+reloadscripts command. So, to try the samplescripts out, rename them so that 
+their filenames end with '.pl' instead of '.plz'.
+
+To try your scripts out, I recommend you to first run opendchub with the -d 
+option. This will make opendchub print it's output to the console, instead
+of running in the background. If you have made errors when making your script,
+some error messages from the Perl interpreter might be printed to the console,
+which can be of big help. As soon as you know your script is working, you
+should run opendchub in the background as usual. The -d option is only for
+testing, since some special characters in $Lock or $Key sequences can make the
+terminal unusable.
+
+Here follows a description of the subs you can use for scripts. The scripting 
+language used is Perl. For hints on how to use them, check out the sample 
+scripts. The subs are written in 'c-style' here, i.e:
+"function(arg_1, arg_2, ..., arg_n)", but the arguments aren't caught in that 
+way. Also for this matter, I advise you to check out the sample scripts. 
+
+The user argument is the nickname of the user, represented as a string.
+
+added_perm_ban(string banentry);
+Fires when an entry is added to the banlist.
+
+added_temp_ban(string banentry, int time);
+Fires when a temporary entry is added to the banlist. Time is the duration of
+the ban measured in seconds.
+
+added_perm_allow(string allowentry);
+Fires when an entry is added to the allowlist.
+
+added_temp_allow(string allowentry, int time);
+Fires when a temporary entry is added to the allowlist. Time is the duration of
+the allow measured in seconds.
+
+added_perm_nickban(string allowentry);
+Fires when an entry is added to the nickbanlist.
+
+added_temp_nickban(string banentry int time);
+Fires when a temporary nick ban is added to the banlist. Time is the duration
+of the ban measured in seconds.
+
+kicked_user(string kicked_user, string kicking_user);
+Fires when a user gets kicked. kicked_user is the user who is kicked and 
+kicking_user is the user who is kicking.
+
+added_registered_user(string nick);
+Fires when a registered user is added to the reglist.
+
+added_multi_hub(string hostname, int port);
+Fires when a linked hub is added to the linklist.
+
+started_redirecting(string hostname);
+Fires when an administrator redirects all users.
+
+mass_message(string message);
+Fires when an administrator sends a massmessage (private message to all).
+
+started_serving();
+Fires when the hub is started up.
+
+multi_hub_data_chunk_in(string data);
+Fires when data is received from a linked hub.
+
+attempted_connection(string hostname);
+Fires when someone attempts to connect to the hub.
+
+data_arrival(user_t user, string data);
+Fires when a user send data to the hub, probably one of the most useful subs.
+
+op_admin_connected(user_t user);
+Fires when an op admin logs in.
+
+op_connected(user_t user);
+Fires when an op logs in.
+
+reg_user_connected(user_t user);
+Fires when a registered user logs in.
+
+new_user_connected(user_t user);
+Fires when a regular user logs in, i.e after the $MyINFO is sent to the hub.
+
+user_disconnected(string nick);
+Fires when a user disconnects from the hub.
+
+hub_timer();
+This sub fires once every ALARM_TIME seconds, by default set to 15 minutes.
+
+
+-------------------------------------------------------------------------------
+
+Here are the available functions, all performed on the virtual object odch. The
+user_t type is the same as the one passed by the subs.
+
+
+These functions are used to retrieve the user's attributes:
+
+int odch::get_type(user_t user);
+Returns the type of the user. Type can have the following values:
+0:  The user isn't in the hub. Use odch::check_if_registered to see if a 
+    certain nick is on the reglist.
+1:  A user who has not yet sent the key in response to the lock in case you are
+    running the hub with check_key set to 1.
+2:  A user who has sent the key, but not yet the MyINFO command. If the hub is
+    running with check_key set to 0, users will have this type when they 
+    connect.
+4:  A regular user who has sent the MyINFO command and therefore shows in the
+    nicklist.
+8:  A registered user with now special permissions.
+16: A user who is registered as OP.
+32: A user who is registered as OP Admin. (OP with chat administration 
+    privileges.)
+64: A telnet administrator.
+
+string odch::get_ip(user_t user);
+Returns the ip of the user as a string.
+
+string odch::get_hostname(user_t user);
+Returns the hostname of the user.
+
+string odch::get_version(user_t user);
+Returns the version of the user.
+
+string odch::get_description(user_t user);
+Returns the description of the user.
+
+string odch::get_email(user_t user);
+Returns the email of the user.
+
+int odch::get_connection(user_t user);
+Returns the connection type of the user as an integer, the connection types
+are represented by the following number: 28.8: 1, 33.6: 2, 56: 3, Satellite: 4
+ISDN: 5, DSL: 6, Cable: 7, LAN(T1): 8, LAN(T3): 9.
+
+int odch::get_flag(user_t user);
+Returns the flag of the user.
+
+int odch::get_share(user_t user);
+Returns the share size of the user in bytes.
+
+int odch::check_if_banned(user_t user);
+Returns 1 if a user is in the banlist, 0 if not.
+
+int odch::check_if_allowed(user_t user);
+Returns 0 if a user is in the allowlist, 0 if not.
+
+odch::check_if_registered(string nick);
+Checks if a certain nickname is on the reglist. Returns 0 if user isn't on
+list, 1 if user is a regular registered user, 2 if user is op and 3 if user
+is an op admin.	
+
+-------------------------------------------------------------------------------
+
+Functions to perform actions on users:
+
+odch::data_to_user(user_t user, string data);
+Sends data to a user, for example a private message in the form:
+$To Nickname From: Scriptname $<Scriptname> Message.|
+Note that this is raw data, clients won't parse the command if it isn't 
+ended with a '|'.
+
+odch::kick_user(user_t user);
+Kicks a user.
+
+odch::force_move_user(user_t user, string ip);
+Sends a force move message to a user where ip is the ip or hostname of the
+host to which the user should connect.
+
+
+-------------------------------------------------------------------------------
+
+These functions are used to retrieve and change config variables.
+
+var odch::get_variable(string variable_name);
+Returns the value of a variable set in the config file. Var can be both an
+integer or a string, depending on the requested variable. 
+Apart from the config file variables, there are three more variable that can 
+be retrieved with this function; working_dir, hub_uptime and total_share. 
+working_dir is the path to the root of the hub. By default, this is your home 
+directory.
+hub_uptime is the uptime of the hub measured in seconds. 
+total_share is the total share of all connected users, measured in bytes.
+
+odch::set_variable(string variable, string value);
+Sets a variable in the config file to the given value. Even if the value is
+an integer, it should be sent as a string, for example: 
+set_variable("max_users", "800");
+
+
+-------------------------------------------------------------------------------
+
+Functions to add or remove entries from lists:
+
+odch::add_ban_entry(string banentry);
+Adds an entry to the banlist.
+
+odch::add_nickban_entry(string banentry);
+Adds an entry to the nickbanlist.
+
+odch::remove_ban_entry(string banentry);
+Removes an entry from the banlist.
+
+odch::remove_nickban_entry(string banentry);
+Removes an entry from the nickbanlist.
+
+odch::add_allow_entry(string allowentry);
+Adds an entry to the allowlist.
+
+odch::remove_allow_entry(string allowentry);
+Removes an entry from the allowlist.
+
+odch::add_reg_user(string nick, string password, int type);
+Adds a registered user to the reglist. Type is 0 for regular registered users,
+1 for OP:s and 2 for OP Admins (OP:s with access to admin commands in chat).
+
+odch::remove_reg_user(string nick);
+Removes user with nickname nick from the reglist.
+
+odch::add_linked_hub(string ip, int port);
+Adds a hub to the linklist. 
+
+odch::remove_linked_hub(string ip, int port);
+Removes a hub from the linklist. Note that port has to match, since more than
+one hub can be run from one ip.
+
+-------------------------------------------------------------------------------
+
+Various functions to perform actions on the hub.
+
+odch::data_to_all(string data);
+Send data to all users, for example a chat message in the form:
+<Botname> Message.|
+
+int odch::count_users();
+Returns the number of users connected to the hub.
+
+string odch::get_user_list();
+Returns a space separated list of all connected users.
+
+odch::register_script_name(string nick);
+Registers 'nick' as the scripts nickname in the nicklist so that users can send
+private messages to the script. The nick will be added to the reglist with
+a randomized password. Note that it won't be removed from the reglist after
+the script has been unloaded or the hub has been shutdown, so that has to be 
+done manually.
+
+-------------------------------------------------------------------------------
+
+Be careful when typing the odch function names. If you mistype a function 
+name, you won't get any information about it, and your script won't work.

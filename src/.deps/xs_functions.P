@@ -1,0 +1,3 @@
+xs_functions.o: xs_functions.c ../config.h
+xs_functions.c :
+../config.h :

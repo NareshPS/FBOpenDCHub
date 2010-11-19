@@ -1,0 +1,333 @@
+0.7.15:
+*  Fixed a bug that disconnected users having uncommon connection types.
+
+0.7.14:
+*  Fixed a bug that caused users to not be removed properly from scripts.
+*  Fixed a bug that made check_if_allowed() fail for complete hostnames. Fix
+   provided by mabreaker.
+*  Fixed a bug that allowed duplicate entries in the linked hublist.
+
+0.7.13:
+*  Fixed a bug that caused the hub to stop listen for connections. Fix by
+   Robin Hill.
+*  Added default_pass variable. Provided by B. Galliart.
+*  Added admin_localhost option. Provided by B. Galliart. 
+*  Fixed a bug that caused the hub to limit the maximum users per process
+   more than necessary in some cases.
+*  Removed the HUB_VERSION variable, using VERSION instead which is defined in
+   config.h.
+*  Switched to using non-blocking sockets between processes. This will fix
+   a problem that could hang a process.
+   
+0.7.12:
+*  Fixed a bug where a process could try to open the listening sockets when
+   it already had them open, which caused the hub to shut down.
+*  Fixed a bug that could cause a fake user called "removed user" to enter the
+   userlist.
+*  Fixed two bugs in network.c which could cause a bad hostname to be set and
+   hublinking to fail.
+*  Fixed a couple of bugs related to the $OpForceMove command.
+
+0.7.11:
+*  Fixed a bug in configure regarding the --enable-switch_user option.
+*  Fixed a bug that caused the $getip command not to work properly.
+*  Fixed a bug that could hang the hub when logging in to the administrators 
+   port.
+*  Fixed a bug that could cause the listening process to shut down without
+   having the hub opening up a new one.
+*  Fixed a bug that caused the $getreglist command not to work for
+   administrators.
+*  Passwords are no longer returned with the $getreglist command.
+
+0.7.10:
+*  Fixed a bug that caused the trailing '|' character not to be sent to
+   scripts in the data_arrival Perl sub.
+
+0.7.9:
+*  Changed the way the hub forks. The hub will now always run in at least two
+   processes, where the main processes never holds any connected clients.
+*  Fixed a bug which caused the wrong minimum share size being displayed to
+   users with too small share.
+*  Changed the behavior of redirects. Users are no longer disconnected
+   directly upon redirection.
+*  Increased maximum length of hub description to 100 characters.
+*  Fixed a bug that caused parts of the $SR command not to be sent to scripts.
+*  Fixed a couple of userlist related bugs that could cause ghosted users,
+   bad number of total users, etc.
+*  The EINTR error is now properly handled on those places where it can
+   occur.
+*  The addperm and removeperm commands now work between forked processes.
+*  Added Perl sub kicked_user.
+** Changes by Robin Hill:
+*  Various code cleanups and fixes of potential problems and vulnerabilities.
+*  memset() is now used for zeroing memory.
+*  The hub now uses poll() instead of select() on systems where it's available.
+
+0.7.8:
+*  Fixed a bug that could cause script processes to be removed in rare cases.
+*  Fixed a bug that displayed the wrong messages when removing entries from
+   the banlist/nickbanlist/allowlist in chat.
+*  Fixed a memory leak in the odch::get_description function.
+*  Fixed a bug that made the !gethost/!getip commands not work for Op:s in
+   chat.
+*  Fixed a bug that sent an erroneous minimum share size in the message that
+   tells a user if the users share is to small.
+*  Added Perl script function odch::get_email().
+*  Added Perl script functions odch::add_nickban_entry() and 
+   odch::remove_nickban_entry().
+*  Fixed a bug that could cause the $addnickban command to crash a script.
+
+0.7.7:
+*  Fixed a bug that made the hub not send the $Quit message to all connected 
+   users on a users disconnection if the hub was running in more than three
+   processes.
+*  Fixed a bug that caused users to be ghosted when using the odch::kick
+   function.
+*  Fixed a bug that caused odch::get_variable("min_share") to return an 
+   erroneous value.
+*  Fixed a bug that caused odch::get_variable("total_share") to return an 
+   erroneous value on systems where "long" is represented by 32 bits.
+*  Added "--version" command line option.
+*  Fixed a bug that added temporary bans to the banlist if a registered user 
+   logged in when a ghost of the user where left in the hub.
+*  Fixed a few bugs concerning the hub linking feature.
+
+0.7.6:
+*  Rewrote the way bans/allows work. Check the documentation for info.
+*  If a registered user logs in with a proper password, any already logged in
+   user will be kicked. This will prevent ghosted users to block registered
+   users from getting in to the hub.
+*  Fixed a bug that caused the hub to crash when using the massmessage
+   command. Fix provided by Kent Nilsson.
+** Changes by Robin Hill:
+*  Various bugfixes.
+*  The syslog command line switch wont affect the config variable anymore.
+*  Added 127.0.0.0/8 to list of internal network addresses.
+*  Added commands addperm, removeperm and showperm to extend the permissions
+   of regular Op:s.
+*  Dynamic allocation for a users email and description. The maximum length of
+   them are set in the config file.
+*  Added banning of nicknames.
+*  Added functionality for retrieving the total share size and the hub uptime
+   from Perl scripts.
+*  Added config file variable crypt_enable, which allows enabling/disabling of
+   password encryption in the reglist.
+*  Added variables hub_uptime and total_share, which are retrievable through
+   the Perl function odch::get_variable.
+
+0.7.5:
+* The new_user_connected subs are now triggered first after the scripts has
+  received the $MyINFO $ALL command. This should fix problems with getting 
+  info in scripts on newly connected users. Thanks to James Lick for a
+  detailed description of the problem.
+* Made some changes to make it configure correctly on FreeBSD. Thanks to 
+  Davide Lemma for providing information.
+* The userlist is now saved in a shared memory segment instead of a temporary
+  file.
+* Added perl function odch::get_user_list() for retrieving a list of all
+  connected users.
+* Added the --disable-perl argument to configure for disabling scripting in a 
+  cleaner way.
+** Following changes by Robin Hill:
+* Added option -s to output to syslog instead of logfile. Also available as an
+  option in the config file, syslog_enable.
+* Added option searchcheck_exclude_internal to exclude check if internal ips
+  on searches.
+* Added option searchcheck_exclude_all to disable ip check on searches.
+* Added temporary bans.
+* Added option kick_bantime, which is the number of minutes a user should be
+  temporary banned after a kick.
+* Added option searchspam_time, which is the number of seconds that have to
+  pass between two searches from a user.
+* Added possibility to change the user after starting the hub as root, thus
+  making it possible to run on low ports without running as root. This is done
+  with the -u (user) and -g (group) options. This also has to be enabled with
+  the --enable-switch_user argument to configure.
+* Added option -w to set the working directory of the hub.
+* All nickname checks are case insensitive.
+
+0.7.4:
+* Added Perl script sub hub_timer, which is fired once every 15 minutes.
+* Rewrote part of the login procedure for Op:s and Op Admins to make it faster.
+* Users are no longer saved in shared memory segments, instead copies of all
+  users are saved in the script processes.
+* Users are now represented by their nicknames in scripts.
+* Removed the odch::get_nickname() script function because of the change
+  above.
+* The total share size is now saved in a shared memory segment.
+* The odch::get_type() function now returns 0 if the user isn't in the hub.
+* Added Perl script function odch::check_if_registered, which makes it possible
+  to check if a certain nickname is registered or not. Addition provided by
+  Kent Nilsson.
+** The following changes were made by Magnus Johansson:
+* Added chat command !setpass, which gives registered users, Ops and Op Admins
+  the possibility to change their password in chat.
+* Added encryption of the user passwords saved in the reglist.
+* Added arguments '-l' for setting the path to the logfile and '-h' for a 
+  brief help message.
+* Various spell and grammar corrections.
+
+0.7.3:
+* Fixed a problem which made the hub crash on startup if gcc 3.2 was used as
+  compiler.
+* Fixed a bug which made it impossible to remove a registered user with a nick
+  starting with a digit.
+
+0.7.2:
+* If the hub fails to get a shared memory segment id, or fails to attach to it,
+  it won't shut down, only disconnect the user.
+* Fixed a bug that could cause a segfault when sending data from a user to the
+  scripts.
+
+0.7.1:
+* Fixed a bug which caused the hub to crash if no scripts where loaded when 
+  running the reloadscripts command.
+* The massmessage command now works also for Op admins.
+* Fixed a bug which crashed the hub when an Op admin used the !redirectall
+  command. Op admins are no longer effected by the command at all.
+
+0.7.0:
+* Added support for Perl scripts, included a couple of sample scripts.
+* Changed the data structure of connected users from linked list to hash table.
+* Connected users are now saved in shared memory segments.
+* Added option reverse_dns. By default, this is set to 0 which means that no
+  reverse DNS lookups to retrieve hostnames will be made.
+* Added a "private message to all" command for Admins and Op Admins.
+* Now the hub catches the SIGINT signal for clean termination.
+* A lot of code cleanup.
+* Fixed a bug that could cause the !set command not being able to set the motd
+  right.
+* It's no longer possible to log in as admin when connecting to the regular
+  listening port.
+* Changed for security reasons all default permissions of newly created files 
+  so that only the owner may access the files.
+* By default, the hub no longer checks the key from the client. If no key check
+  is made, the lock isn't computed randomly to save cpu time.
+* Comments are no longer allowed in the config files.
+* Fixed a bug which caused zombie processes to be left on FreeBSD systems.
+
+0.6.11:	  
+* Fixed a bug which could cause the hub not to fork properly if the check_key
+  variable was set to 1.
+* Changed time between uploads to public hub list to 15 minutes.
+* Changed default value of users_per_fork to 1000.
+* Fixed a bug where the user_list_file was read without first setting the file
+  lock correctly. This could cause logged off users to be ghosted.
+
+0.6.10:
+* Fixed some possible buffer overflows in the set_var function.
+  Vulnerabilities provided by Miguel A. Correa.
+* Made changes in the init_dir function to simplify use in Windows/Cygwin. 
+  Changes provided by Miguel A. Correa.
+* Removed a restriction for nicknames which made it impossible to use names
+  which started with one of some special characters. Also removed a
+  restriction which disallowed empty chat lines. Changes requested by 
+  Martin Poelstra.
+* Made it possible to kick ghosted users from the user list.
+
+0.6.9:
+* It's now possible to have the hub redirect users who connect to the hub but
+  don't meet the minimum share requirement. Feature requested by darkhellfire.
+* Removed the $writeconfig command since it doesn't have any effect anymore.
+* Added some comments in commands.c to make it easy for hub owners to change
+  the source to control searches.
+* Fixed some bugs which could cause the hub to crash when an administrator
+  used the set command. Provided by Spencer Hardy.
+
+0.6.8:
+* Fixed a small bug that could cause an erroneous nicklist to be sent.
+* Made a fix so that the program should compile and run on platforms that are 
+  missing the strtoll() function but have the strtoq() function.
+* Made it possible to specify the minimum share in MegaBytes and GigaBytes.
+
+0.6.7:
+* Increased maximum packet length.
+* Increased maximum description length to 60 characters.
+* Config file is now automatically rewritten when a variable is changed.
+* The nickname in the kick command is no longer case sensitive.
+* The hostname of the user is now stored with the nickname in the temporary
+  user list file.
+* Added two admin commands: $gethost| and $getip|.
+* Most admin commands are no longer case sensitive.
+* Added a new type of user who has privileges to administer the hub directly
+  from the chat.
+* Added command $commands|, which displays all available commands to the
+  administrator.
+* Inserted some carriage return characters in the messages to telnet 
+  administrators to make the output format look nicer on windows telnet.
+* Fixed a bug that could cause a crash when a user tried to connect to the hub
+  and the hub was full.
+* Fixed a small bug that could cause nicknames from disconnected users being
+  left in the user list in some rare cases.
+
+0.6.6:
+* Increased maximum nick length to 50 characters.
+* Changed the way normal users are removed.
+* Removed timeout for normal users.
+* Some code cleanup.
+* Added an outbuf variable that saves commands that should be sent to the user
+  in case send() fails.
+
+0.6.5:
+* Added a variable that decides the verbosity of the log file.
+* Added some log messages and rewrote some of the existing ones.
+* All sockets are now non-blocking.
+* Increased maximum description length to 50 characters.
+* Fixed a bug which could make the wrong minimum share size be displayed to the
+  user if user didn't share enough.
+
+0.6.4:
+* Fixed a bug that caused memory not to be freed if a command sent to the
+  hub didn't end with a '|'.
+
+0.6.3:
+* Made some changes to make the program FreeBSD compatible. Changes provided by
+  BombJack.
+* The motd is now in a separate file.
+* Added $Exit| command for administrators.
+* Fixed some possible memory leaks.
+
+0.6.2:
+* Changed maximum nicklength to 25 characters.
+* Fixed a bug which made a thread crash when the program forked if a connected
+  user had some special characters in the nickname.
+
+0.6.1:
+* Changed a snprintf in main.c to strncpy because strings containing '%'
+  signs could make the hub behave weird or crash.
+
+0.6.0:
+* Added linking between hubs to make multisearch possible.
+* Op:s no longer need to meet the share requirement.
+* Added some logging messages to make it easier to follow which hostname a
+  certain user is logged in from.
+* Changed some sprintf's to strcpy instead because sprintf seemed to crash
+  the hub in some cases with long strings.
+* Fixed a bug which caused the wrong share size to be uploaded to the public
+  hublist.
+
+0.5.3:
+* Added some checking of hostname so it isn't set to "127.0.0.1" when 
+  uploading to public hublist.
+
+0.5.2:
+* Now the hub properly uploads the total share on the hub when uploading to
+  public hublist.
+* Added possibility to change the hostname that is uploaded to the public 
+  hublist. Useful if the hub is run on a computer with dynamic ip.
+* Fixed a bug that caused the hub to upload 0 users in hub description to 
+  public hublist if listening port was set to 411.
+* Fixed a bug in version() where the program tried to write to stdout with
+  printf when stdout was closed.
+* Fixed a bug which caused hublist upload to not occur when users are 
+  connected to the hub.
+  
+0.5.1:
+* Included <sys/time.h> in network.c because select() needs it on some
+  systems. Pointed out by Joakim Gissberg.
+* Added check of client version.
+* Added check of Key from client, which is sent as a reply to the initial
+  Lock string, sent from the hub.
+
+0.5.0:
+* Initial public release.

@@ -1,0 +1,112 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader 2.13.  */
+
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+/* Define if you don't have vprintf but do have _doprnt.  */
+#undef HAVE_DOPRNT
+
+/* Define if you have the vprintf function.  */
+#undef HAVE_VPRINTF
+
+/* Define to `int' if <sys/types.h> doesn't define.  */
+#undef mode_t
+
+/* Define to `int' if <sys/types.h> doesn't define.  */
+#undef pid_t
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Define if you can safely include both <sys/time.h> and <time.h>.  */
+#undef TIME_WITH_SYS_TIME
+
+#undef _GNU_SOURCE
+
+/* Define if you have the gethostname function.  */
+#undef HAVE_GETHOSTNAME
+
+/* Define if you have the mkdir function.  */
+#undef HAVE_MKDIR
+
+/* Define if you have the poll function.  */
+#undef HAVE_POLL
+
+/* Define if you have the select function.  */
+#undef HAVE_SELECT
+
+/* Define if you have the socket function.  */
+#undef HAVE_SOCKET
+
+/* Define if you have the strstr function.  */
+#undef HAVE_STRSTR
+
+/* Define if you have the strtoll function.  */
+#undef HAVE_STRTOLL
+
+/* Define if you have the strtoq function.  */
+#undef HAVE_STRTOQ
+
+/* Define if you have the <crypt.h> header file.  */
+#undef HAVE_CRYPT_H
+
+/* Define if you have the <fcntl.h> header file.  */
+#undef HAVE_FCNTL_H
+
+/* Define if you have the <grp.h> header file.  */
+#undef HAVE_GRP_H
+
+/* Define if you have the <malloc.h> header file.  */
+#undef HAVE_MALLOC_H
+
+/* Define if you have the <pwd.h> header file.  */
+#undef HAVE_PWD_H
+
+/* Define if you have the <sys/capability.h> header file.  */
+#undef HAVE_SYS_CAPABILITY_H
+
+/* Define if you have the <sys/poll.h> header file.  */
+#undef HAVE_SYS_POLL_H
+
+/* Define if you have the <sys/prctl.h> header file.  */
+#undef HAVE_SYS_PRCTL_H
+
+/* Define if you have the <sys/select.h> header file.  */
+#undef HAVE_SYS_SELECT_H
+
+/* Define if you have the <sys/time.h> header file.  */
+#undef HAVE_SYS_TIME_H
+
+/* Define if you have the <syslog.h> header file.  */
+#undef HAVE_SYSLOG_H
+
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+
+/* Define if you have the crypt library (-lcrypt).  */
+#undef HAVE_LIBCRYPT
+
+/* Define if you have the crypto library (-lcrypto).  */
+#undef HAVE_LIBCRYPTO
+
+/* Define if you have the nsl library (-lnsl).  */
+#undef HAVE_LIBNSL
+
+/* Define if you have the socket library (-lsocket).  */
+#undef HAVE_LIBSOCKET
+
+/* Name of package */
+#undef PACKAGE
+
+/* Version number of package */
+#undef VERSION
+
+/* Has the cap_set_proc function */
+#undef HAS_CAP_SET_PROC
+
+/* Switch user if started as root */
+#undef SWITCH_USER
+
+/* Define HAVE_PERL */
+#undef HAVE_PERL
+

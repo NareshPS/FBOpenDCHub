@@ -1,0 +1,129 @@
+# This scripts tests the different subs that are fired from the hub. To run it,
+# rename the filename so that it ends with '.pl'.
+
+$botname = "SubTestBot";
+
+sub main()
+{
+    odch::register_script_name($botname);
+}
+    
+sub new_user_connected()
+{
+    my($user) = @_;
+    my($host) = odch::get_hostname($user);
+    my($ip) = odch::get_ip($user);
+    odch::data_to_all("<$botname> $user logged in from $host. Ip is $ip|");
+}
+
+sub data_arrival()
+{
+    my($user, $data) = @_;
+    odch::data_to_user($user, 
+	       "\$To: $user From: $botname \$<$botname> You sent: $data");
+#  We don't need to end the command with a '|' here, since the data ends with
+#  a '|' anyway.
+}
+
+sub added_perm_ban()
+{
+    my($entry) = @_;
+    odch::data_to_all("<$botname> Added banentry: $entry|");
+}
+
+sub added_perm_allow()
+{
+    my($entry) = @_;
+    odch::data_to_all("<$botname> Added allowentry: $entry|");
+}
+
+sub added_registered_user()
+{
+    my($nick) = @_;
+    odch::data_to_all("<$botname> Added registered user: $nick|");    
+}
+
+sub added_multi_hub()
+{
+    my($hub, $port) = @_;
+    odch::data_to_all("<$botname> Added multihub: $hub:$port|");
+}
+
+sub started_redirecting()
+{
+    my($host) = @_;
+# 'print' prints to stdout, so only use print when running in console with
+# the '-d' option, and only use it (both 'print' and '-d') for testing purpose!
+    print "redirected to $host\n";
+}
+
+sub mass_message()
+{
+    my($mess) = @_;
+    odch::data_to_all("<$botname> Mass-Message: $mess|");
+}
+
+sub started_serving()
+{
+# Read comment above about 'print'.
+    print "From: $botname: Started serving\n";
+}
+
+sub multi_hub_data_chunk_in()
+{
+    my($mess) = @_;
+    odch::data_to_all("<$botname> Multihub data: $mess|");
+}
+
+sub attempted_connection()
+{
+    my($host) = @_;
+    odch::data_to_all("<$botname> $host attempted connection.|");
+}
+
+sub op_admin_connected()
+{
+    my($user) = @_;
+    my($host) = odch::get_hostname($user);
+    my($ip) = odch::get_ip($user);
+    odch::data_to_all("<$botname> Op Admin $user logged in from $host. Ip is $ip|");
+}
+
+sub op_connected()
+{
+    my($user) = @_;
+    my($host) = odch::get_hostname($user);
+    my($ip) = odch::get_ip($user);
+    odch::data_to_all("<$botname> OP $user logged in from $host. Ip is $ip|");
+}
+
+sub reg_user_connected()
+{
+    my($user) = @_;
+    my($host) = odch::get_hostname($user);
+    my($ip) = odch::get_ip($user);
+    odch::data_to_all("<$botname> Reg user $user logged in from $host. Ip is $ip|");
+}
+
+sub user_disconnected()
+{
+    my($nick) = @_;
+    odch::data_to_all("<$botname> $nick diconnected.|");
+}
+ 
+sub hub_timer()
+{
+     odch::data_to_all("<$botname> Hub timer test.|");
+}
+
+sub added_temp_ban()
+{
+     my($entry, $timep) = @_;
+     odch::data_to_all("<$botname> $entry is banned for $timep seconds.|");
+}
+	
+sub added_temp_allow()
+{
+    my($entry, $timep) = @_;
+    odch::data_to_all("<$botname> $entry is allowed for $timep seconds.|");
+}

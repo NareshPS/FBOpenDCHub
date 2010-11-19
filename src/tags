@@ -1,0 +1,338 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADMIN	main.h	74;"	d
+ALARM_TIME	main.h	29;"	d
+ALLOW	main.h	89;"	d
+ALLOW_FILE	main.h	46;"	d
+BAD_PASS_MESS	main.h	63;"	d
+BAN	main.h	90;"	d
+BAN_ALLOW	main.h	81;"	d
+BAN_FILE	main.h	44;"	d
+BAN_MESS	main.h	59;"	d
+BYTE	main.h	27;"	d
+CONFIG	main.h	92;"	d
+CONFIG_FILE	main.h	42;"	d
+EXTERN_C	xs_functions.c	39;"	d	file:
+FORKED	main.h	75;"	d
+GET_PASS_MESS	main.h	60;"	d
+GET_PASS_MESS2	main.h	65;"	d
+HELLO_MESS	main.h	57;"	d
+HOST	main.h	96;"	d
+HUB_FULL_MESS	main.h	58;"	d
+INIT_ADMIN_MESS	main.h	64;"	d
+INIT_MESS	main.h	56;"	d
+IP	main.h	97;"	d
+LINK	main.h	93;"	d
+LINKED	main.h	76;"	d
+LINK_FILE	main.h	48;"	d
+LOGGED_IN_MESS	main.h	61;"	d
+LOG_FILE	main.h	50;"	d
+MASSMESSAGE	main.h	83;"	d
+MAX_ADMIN_PASS_LEN	main.h	36;"	d
+MAX_BUF_SIZE	main.h	37;"	d
+MAX_FDP_LEN	main.h	38;"	d
+MAX_HOST_LEN	main.h	31;"	d
+MAX_HUB_DESC	main.h	35;"	d
+MAX_HUB_NAME	main.h	34;"	d
+MAX_MESS_SIZE	main.h	33;"	d
+MAX_NICK_LEN	main.h	30;"	d
+MAX_VERSION_LEN	main.h	32;"	d
+MOTD_FILE	main.h	43;"	d
+NICKBAN	main.h	94;"	d
+NICKBAN_FILE	main.h	45;"	d
+NON_LOGGED	main.h	69;"	d
+NON_LOGGED_ADM	main.h	78;"	d
+OP	main.h	72;"	d
+OP_ADMIN	main.h	73;"	d
+OP_LOGGED_IN_MESS	main.h	62;"	d
+OP_PERM_FILE	main.h	49;"	d
+PRIV	main.h	86;"	d
+REG	main.h	91;"	d
+REGISTERED	main.h	71;"	d
+REGULAR	main.h	70;"	d
+REG_FILE	main.h	47;"	d
+REMOVE_FROM_LIST	main.h	108;"	d
+REMOVE_USER	main.h	106;"	d
+SCRIPT	main.h	77;"	d
+SCRIPT_DIR	main.h	53;"	d
+SEND_QUIT	main.h	107;"	d
+SIGCHLD	main.c	82;"	d	file:
+SYSLOG_IDENT	main.h	54;"	d
+TO_ALL	main.h	87;"	d
+UNKEYED	main.h	68;"	d
+UN_SOCK_NAME	main.h	51;"	d
+USER_ADMIN	main.h	84;"	d
+USER_INFO	main.h	82;"	d
+USER_LIST	main.h	52;"	d
+USER_LIST_ENT_SIZE	main.h	39;"	d
+XS	xs_functions.c	/^XS(xs_add_allow_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_add_ban_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_add_linked_hub)$/;"	f
+XS	xs_functions.c	/^XS(xs_add_nickban_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_add_reg_user)$/;"	f
+XS	xs_functions.c	/^XS(xs_check_if_allowed)$/;"	f
+XS	xs_functions.c	/^XS(xs_check_if_banned)$/;"	f
+XS	xs_functions.c	/^XS(xs_check_if_registered)$/;"	f
+XS	xs_functions.c	/^XS(xs_count_users)$/;"	f
+XS	xs_functions.c	/^XS(xs_data_to_all)$/;"	f
+XS	xs_functions.c	/^XS(xs_data_to_user)$/;"	f
+XS	xs_functions.c	/^XS(xs_force_move_user)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_connection)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_description)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_email)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_flag)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_hostname)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_ip)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_share)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_type)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_user_list)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_variable)$/;"	f
+XS	xs_functions.c	/^XS(xs_get_version)$/;"	f
+XS	xs_functions.c	/^XS(xs_kick_user)$/;"	f
+XS	xs_functions.c	/^XS(xs_register_script_name)$/;"	f
+XS	xs_functions.c	/^XS(xs_remove_allow_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_remove_ban_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_remove_linked_hub)$/;"	f
+XS	xs_functions.c	/^XS(xs_remove_nickban_entry)$/;"	f
+XS	xs_functions.c	/^XS(xs_remove_reg_user)$/;"	f
+XS	xs_functions.c	/^XS(xs_set_variable)$/;"	f
+__buf	main.h	/^      struct seminfo *__buf;      \/* buffer for IPC_INFO *\/$/;"	m	union:my_semun	typeref:struct:my_semun::seminfo
+add_fd	network.c	/^void add_fd(struct pollfd *newfd, int sock)$/;"	f
+add_human_to_hash	main.c	/^void add_human_to_hash(struct user_t *user)$/;"	f
+add_line_to_file	fileio.c	/^int add_line_to_file(char *line, char *file)$/;"	f
+add_linked_hub	fileio.c	/^int add_linked_hub(char *buf)$/;"	f
+add_non_human_to_list	main.c	/^void add_non_human_to_list(struct user_t *user)$/;"	f
+add_perm	fileio.c	/^int add_perm(char *buf, struct user_t *user)$/;"	f
+add_reg_user	fileio.c	/^int add_reg_user(char *buf, struct user_t *user)$/;"	f
+add_socket	network.c	/^void add_socket(struct user_t *user)$/;"	f
+add_total_share	utils.c	/^void add_total_share(long long add)$/;"	f
+add_user_to_list	userlist.c	/^int add_user_to_list(struct user_t *user)$/;"	f
+admin_listening_socket	main.h	/^int    admin_listening_socket;      \/* Socket for incoming connections from admins *\/$/;"	v
+admin_localhost	main.h	/^BYTE   admin_localhost;             \/* 1 to bind administration port localhost only *\/$/;"	v
+admin_pass	main.h	/^char   admin_pass[MAX_ADMIN_PASS_LEN+1];$/;"	v
+admin_port	main.h	/^unsigned int admin_port;            \/* Administration port *\/$/;"	v
+alarm_signal	main.c	/^void alarm_signal(int z)$/;"	f
+array	main.h	/^      unsigned short int *array;  \/* array for GETALL, SETALL *\/$/;"	m	union:my_semun
+ballow	commands.c	/^int ballow(char *buf, int type, struct user_t *user)$/;"	f
+ban_overrides_allow	main.h	/^BYTE   ban_overrides_allow;         \/* 1 for banlist to override allowlist *\/$/;"	v
+buf	main.h	/^      struct semid_ds *buf;       \/* buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:my_semun	typeref:struct:my_semun::semid_ds
+buf	main.h	/^   char *buf;                         \/* If a command doesnt't fit in one packet,$/;"	m	struct:user_t
+chat	commands.c	/^void chat(char *buf, struct user_t *user)$/;"	f
+check_admin_pass	commands.c	/^int check_admin_pass(char *buf, struct user_t *user)$/;"	f
+check_if_allowed	fileio.c	/^int check_if_allowed(struct user_t *user)$/;"	f
+check_if_banned	fileio.c	/^int check_if_banned(struct user_t *user, int type)$/;"	f
+check_if_on_linklist	fileio.c	/^int check_if_on_linklist(char *ip, int port)$/;"	f
+check_if_on_user_list	userlist.c	/^char *check_if_on_user_list(char *nick)$/;"	f
+check_if_registered	fileio.c	/^int check_if_registered(char *user_nick)$/;"	f
+check_key	main.h	/^BYTE   check_key;                   \/* Checks key from client if set to 1 *\/$/;"	v
+check_pass	fileio.c	/^int check_pass(char *buf, struct user_t *user)$/;"	f
+clear_user_list	main.c	/^void clear_user_list(void)$/;"	f
+command_to_scripts	perl_utils.c	/^void command_to_scripts(const char *format, ...)$/;"	f
+con_type	main.h	/^   BYTE con_type;                     \/* Users connection type: 1: 28,8; 2: 33,6;  $/;"	m	struct:user_t
+config_dir	main.h	/^char   config_dir[MAX_FDP_LEN+1];$/;"	v
+connect_to_me	commands.c	/^void connect_to_me(char *buf, struct user_t *user)$/;"	f
+count_all_users	utils.c	/^int count_all_users(void)$/;"	f
+count_users	utils.c	/^int count_users(int type)$/;"	f
+create_allowlist	fileio.c	/^void create_allowlist(void)$/;"	f
+create_banlist	fileio.c	/^void create_banlist(void)$/;"	f
+create_linklist	fileio.c	/^void create_linklist(void)$/;"	f
+create_nickbanlist	fileio.c	/^void create_nickbanlist(void)$/;"	f
+create_op_permlist	fileio.c	/^void create_op_permlist(void)$/;"	f
+create_reglist	fileio.c	/^void create_reglist(void)$/;"	f
+crypt_enable	main.h	/^BYTE   crypt_enable;$/;"	v
+current_forked	main.h	/^int    current_forked;   \/* This is used to keep track on which $/;"	v
+cut_string	utils.c	/^int cut_string(char *buf, char c)$/;"	f
+dchub_group	main.h	/^gid_t  dchub_group;$/;"	v
+dchub_user	main.h	/^uid_t  dchub_user;$/;"	v
+debug	main.h	/^BYTE   debug;                       \/* 1 for debug mode, else 0 *\/$/;"	v
+default_pass	main.h	/^char   default_pass[MAX_ADMIN_PASS_LEN+1];$/;"	v
+desc	main.h	/^   char *desc;                        \/* Description of users files, optional *\/ $/;"	m	struct:user_t
+description	xs_functions.c	/^static char *description = NULL;$/;"	v	file:
+disc_user	commands.c	/^void disc_user(char *buf, struct user_t *user)$/;"	f
+do_fork	main.h	/^BYTE   do_fork;$/;"	v
+do_purge_user_list	main.h	/^BYTE   do_purge_user_list;$/;"	v
+do_send_linked_hubs	main.h	/^BYTE   do_send_linked_hubs;$/;"	v
+do_upload_to_hublist	main.c	/^void do_upload_to_hublist(void)$/;"	f
+do_write	main.h	/^BYTE   do_write;$/;"	v
+email	main.h	/^   char *email;                       \/* Email of user, optional *\/ $/;"	m	struct:user_t
+email	xs_functions.c	/^static char *email = NULL;$/;"	v	file:
+encrypt_pass	main.c	/^void encrypt_pass(char* password)$/;"	f
+flag	main.h	/^   BYTE flag;                         \/* Users flag, represented by one byte *\/ $/;"	m	struct:user_t
+fork_process	main.c	/^void fork_process(void)$/;"	f
+get_hash	utils.c	/^int get_hash(char *nick)$/;"	f
+get_host	commands.c	/^void get_host(char *buf, struct user_t *user, int type)$/;"	f
+get_human_user	main.c	/^struct user_t* get_human_user(char *nick)$/;"	f
+get_info	commands.c	/^void get_info(char *buf, struct user_t *user)$/;"	f
+get_listening_pid	userlist.c	/^int get_listening_pid(void)$/;"	f
+get_listening_socket	network.c	/^int get_listening_socket(int port, int set_to_localhost)$/;"	f
+get_listening_udp_socket	network.c	/^int get_listening_udp_socket(int port)$/;"	f
+get_listening_unx_socket	network.c	/^int get_listening_unx_socket(void)$/;"	f
+get_op_list	userlist.c	/^char *get_op_list(void)$/;"	f
+get_permissions	fileio.c	/^int get_permissions(char *user_nick)$/;"	f
+get_socket_action	network.c	/^void get_socket_action(void)$/;"	f
+get_total_share	utils.c	/^long long get_total_share(void)$/;"	f
+get_uptime	utils.c	/^double get_uptime(void)$/;"	f
+get_user_list_shm_id	userlist.c	/^int get_user_list_shm_id(void)$/;"	f
+get_users_hostname	utils.c	/^void get_users_hostname(char *nick, char *buffy)$/;"	f
+handle_command	main.c	/^int handle_command(char *buf, struct user_t *user)$/;"	f
+hostname	main.h	/^   char hostname[MAX_HOST_LEN+1];     \/* Hostname of user *\/$/;"	m	struct:user_t
+hostname_from_ip	network.c	/^char *hostname_from_ip(long unsigned ip)$/;"	f
+hub_description	main.h	/^char   hub_description[MAX_HUB_DESC+1]; \/* The description of hub that is uploaded to public hublist *\/$/;"	v
+hub_full_mess	main.h	/^char   *hub_full_mess;$/;"	v
+hub_hostname	main.h	/^char   hub_hostname[MAX_HOST_LEN+1];    \/* This is the hostname that is uploaded to the public hublist, so don't try setting this to "127.0.0.1" or "localhost" *\/$/;"	v
+hub_mess	main.c	/^void hub_mess(struct user_t *user, int mess_type)$/;"	f
+hub_name	main.h	/^char   hub_name[MAX_HUB_NAME+1];    \/* Name of the hub. *\/$/;"	v
+hub_start_time	main.h	/^time_t hub_start_time;$/;"	v
+hublist_upload	main.h	/^BYTE   hublist_upload;              \/* User set variable, if 1, upload *\/$/;"	v
+human_hash_table	main.h	/^struct user_t **human_hash_table;  \/* Hashtable of human users *\/$/;"	v	typeref:struct:user_t
+human_sock_list	main.h	/^struct sock_t *human_sock_list;$/;"	v	typeref:struct:sock_t
+increase_user_list	userlist.c	/^void increase_user_list(void)$/;"	f
+init_dirs	fileio.c	/^int init_dirs(void)$/;"	f
+init_sem	utils.c	/^int init_sem(int *sem)$/;"	f
+init_share_shm	utils.c	/^int init_share_shm(void)$/;"	f
+init_sig	main.c	/^void init_sig(void)$/;"	f
+init_user_list	userlist.c	/^int init_user_list(void)$/;"	f
+init_user_list_shm_shm	userlist.c	/^int init_user_list_shm_shm(void)$/;"	f
+ip	main.h	/^   long unsigned ip;                  \/* Ip address of user *\/ $/;"	m	struct:user_t
+ip_to_string	network.c	/^char *ip_to_string(unsigned long ip)$/;"	f
+is_internal_address	network.c	/^int is_internal_address (long unsigned ip)$/;"	f
+key	main.h	/^   int key;                           \/* Start value for the generated key *\/$/;"	m	struct:user_t
+kick	commands.c	/^void kick(char *buf, struct user_t *user, int tempban)$/;"	f
+kick_bantime	main.h	/^int    kick_bantime;$/;"	v
+kill_forked_process	main.c	/^void kill_forked_process(void)$/;"	f
+last_search	main.h	/^   time_t last_search;                \/* Time of the last search attempt *\/$/;"	m	struct:user_t
+link_pass	main.h	/^char   link_pass[MAX_ADMIN_PASS_LEN+1]; \/* Password for hub linking *\/$/;"	v
+listening_port	main.h	/^unsigned int listening_port;        \/* Port on which we listen for connections *\/$/;"	v
+listening_socket	main.h	/^int    listening_socket;            \/* Socket for incoming connections from clients *\/$/;"	v
+listening_udp_socket	main.h	/^int    listening_udp_socket;        \/* Socket for incoming multi-hub messages *\/$/;"	v
+listening_unx_socket	main.h	/^int    listening_unx_socket;        \/* Socket for forked processes to connect to *\/$/;"	v
+logerror	fileio.c	/^void logerror(int verb, int error)$/;"	f
+logfile	main.h	/^char   logfile[MAX_FDP_LEN+1];	\/* Logfile if specifically set *\/$/;"	v
+logprintf	fileio.c	/^void logprintf(int verb, const char *format, ...)$/;"	f
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+match_with_wildcards	utils.c	/^int match_with_wildcards(char *buf1, char *buf2)$/;"	f
+max_desc_len	main.h	/^int    max_desc_len;$/;"	v
+max_email_len	main.h	/^int    max_email_len;$/;"	v
+max_sockets	main.h	/^int    max_sockets;$/;"	v
+max_users	main.h	/^int    max_users;$/;"	v
+min_share	main.h	/^long long min_share;      \/* Minimum share for clients *\/$/;"	v
+min_version	main.h	/^char   min_version[MAX_VERSION_LEN+1];  \/* Minimum client verison to allow users to the hub. *\/$/;"	v
+multi_connect_to_me	commands.c	/^void multi_connect_to_me(char *buf, struct user_t *user)$/;"	f
+multi_search	commands.c	/^void multi_search(char *buf, struct user_t *user)$/;"	f
+my_info	commands.c	/^int my_info(char *org_buf, struct user_t *user)$/;"	f
+my_pass	commands.c	/^int my_pass(char *buf, struct user_t *user)$/;"	f
+my_perl	perl_utils.c	/^static PerlInterpreter *my_perl = NULL;$/;"	v	file:
+my_scandir	fileio.c	/^int my_scandir(char *dirname, char *namelist[])$/;"	f
+my_semun	main.h	/^union my_semun$/;"	u
+new_forked_process	main.c	/^void new_forked_process(void)$/;"	f
+new_human_user	main.c	/^int new_human_user(int sock)$/;"	f
+next	main.h	/^   struct sock_t *next;$/;"	m	struct:sock_t	typeref:struct:sock_t::sock_t
+next	main.h	/^   struct user_t *next;               \/* Next user in list*\/$/;"	m	struct:user_t	typeref:struct:user_t::user_t
+nick	main.h	/^   char nick[MAX_NICK_LEN+1];         \/* Nickname of user *\/ $/;"	m	struct:user_t
+non_format_to_scripts	perl_utils.c	/^void non_format_to_scripts(char *buf)$/;"	f
+non_human_user_list	main.h	/^struct user_t *non_human_user_list; \/* List of non-human users *\/$/;"	v	typeref:struct:user_t
+op_force_move	commands.c	/^void op_force_move(char *buf, struct user_t *user)$/;"	f
+outbuf	main.h	/^   char *outbuf;                      \/* Buf of stuff that will be sent to a user *\/$/;"	m	struct:user_t
+perl_init	perl_utils.c	/^int perl_init(void)$/;"	f
+permissions	main.h	/^   int  permissions;                  \/* Operator permissions (listed above) *\/$/;"	m	struct:user_t
+pid	main.h	/^pid_t  pid;                         \/* Pid of process if parent, if it's a child, pid is 0, for scripts, it's -1 and for hublist upload processes it's -2  *\/$/;"	v
+public_hub_host	main.h	/^char   public_hub_host[MAX_HOST_LEN+1]; \/* This is the hostname to upload hub description to *\/$/;"	v
+purge_user_list	userlist.c	/^void purge_user_list(void)$/;"	f
+quit	main.h	/^BYTE   quit;$/;"	v
+quit_program	commands.c	/^void quit_program(void)$/;"	f
+read_config	fileio.c	/^int read_config(void)$/;"	f
+redir_on_min_share	main.h	/^BYTE   redir_on_min_share;          \/* 1 if user should be redirected if user shares less than the minimum share *\/$/;"	v
+redirect_all	commands.c	/^void redirect_all(char *buf, struct user_t *user)$/;"	f
+redirect_host	main.h	/^char   redirect_host[MAX_HOST_LEN+1]; \/* Host to redirect users to if hub is full *\/$/;"	v
+registered_only	main.h	/^BYTE   registered_only;             \/* 1 for registered only mode, else 0 *\/$/;"	v
+rem	main.h	/^   BYTE rem;                          \/* 1 if user is to be removed *\/$/;"	m	struct:user_t
+remove_all	main.c	/^void remove_all(int type, int send_quit, int remove_from_list)$/;"	f
+remove_exp_from_file	fileio.c	/^int remove_exp_from_file(time_t now_time, char *file)$/;"	f
+remove_expired	commands.c	/^void remove_expired(void)$/;"	f
+remove_human_from_hash	main.c	/^void remove_human_from_hash(char *nick)$/;"	f
+remove_human_user	main.c	/^void remove_human_user(struct user_t *user)$/;"	f
+remove_line_from_file	fileio.c	/^int remove_line_from_file(char *line, char *file, int port)$/;"	f
+remove_linked_hub	fileio.c	/^int remove_linked_hub(char *buf)$/;"	f
+remove_non_human	main.c	/^void remove_non_human(struct user_t *our_user)$/;"	f
+remove_perm	fileio.c	/^int remove_perm(char *buf, struct user_t *user)$/;"	f
+remove_reg_user	fileio.c	/^int remove_reg_user(char *buf, struct user_t *user)$/;"	f
+remove_socket	network.c	/^void remove_socket(struct user_t *user)$/;"	f
+remove_user	main.c	/^void remove_user(struct user_t *our_user, int send_quit, int remove_from_list)$/;"	f
+remove_user_from_list	userlist.c	/^int remove_user_from_list(char *nick)$/;"	f
+rev_connect_to_me	commands.c	/^void rev_connect_to_me(char *buf, struct user_t *user)$/;"	f
+reverse_dns	main.h	/^BYTE   reverse_dns;                 \/* If 1, reverse dns lookups are made on newly connected clients.  *\/$/;"	v
+script_reload	main.h	/^BYTE   script_reload;$/;"	v
+script_to_user	perl_utils.c	/^void script_to_user(char *buf, struct user_t *user)$/;"	f
+search	commands.c	/^void search(char *buf, struct user_t *user)$/;"	f
+searchcheck_exclude_all	main.h	/^BYTE   searchcheck_exclude_all;$/;"	v
+searchcheck_exclude_internal	main.h	/^BYTE   searchcheck_exclude_internal;$/;"	v
+searchspam_time	main.h	/^int    searchspam_time;$/;"	v
+sem_give	utils.c	/^void sem_give(int sem)$/;"	f
+sem_take	utils.c	/^void sem_take(int sem)$/;"	f
+send_commands	commands.c	/^void send_commands(struct user_t *user)$/;"	f
+send_linked_hubs	network.c	/^void send_linked_hubs(void)$/;"	f
+send_lock	utils.c	/^void send_lock(struct user_t *user)$/;"	f
+send_mass_message	commands.c	/^void send_mass_message(char *buffy, struct user_t *user)$/;"	f
+send_motd	fileio.c	/^int send_motd(struct user_t *user)$/;"	f
+send_nick_list	userlist.c	/^void send_nick_list(struct user_t *user)$/;"	f
+send_to_humans	network.c	/^void send_to_humans(char *buf, int type, struct user_t *ex_user)$/;"	f
+send_to_non_humans	network.c	/^void send_to_non_humans(char *buf, int type, struct user_t *ex_user)$/;"	f
+send_to_user	network.c	/^void send_to_user(char *buf, struct user_t *user)$/;"	f
+send_user_info	main.c	/^void send_user_info(struct user_t *from_user, char *to_user_nick, int all)$/;"	f
+send_user_list	commands.c	/^void send_user_list(int type, struct user_t *user)$/;"	f
+sendall	network.c	/^int sendall(int s, char *buf, int *len)$/;"	f
+set_default_vars	main.c	/^int set_default_vars(void)$/;"	f
+set_hub_hostname	network.c	/^int set_hub_hostname(void)$/;"	f
+set_listening_pid	userlist.c	/^int set_listening_pid(int newpid)$/;"	f
+set_lock	fileio.c	/^int set_lock(int fd, int type)$/;"	f
+set_user_list_shm_id	userlist.c	/^void set_user_list_shm_id(int id)$/;"	f
+set_var	commands.c	/^void set_var(char *org_buf, struct user_t *user)$/;"	f
+share	main.h	/^   long long share;                   \/* Size of users share in bytes *\/$/;"	m	struct:user_t
+show_perms	commands.c	/^int show_perms(struct user_t *user, char *buf)$/;"	f
+sock	main.h	/^   int sock;                          \/* What socket the user is on *\/ $/;"	m	struct:user_t
+sock_t	main.h	/^struct sock_t $/;"	s
+socket_action	main.c	/^int socket_action(struct user_t *user)$/;"	f
+sprintfa	utils.c	/^void sprintfa(char *buf, const char *format, ...)$/;"	f
+sr	commands.c	/^void sr(char *buf, struct user_t *user)$/;"	f
+strtoll	commands.c	68;"	d	file:
+strtoll	fileio.c	78;"	d	file:
+strtoll	main.h	101;"	d
+sub_to_script	perl_utils.c	/^void sub_to_script(char *buf)$/;"	f
+switch_listening_process	main.c	/^void switch_listening_process(char *buf, struct user_t *user)$/;"	f
+syslog_enable	main.h	/^BYTE   syslog_enable;$/;"	v
+syslog_switch	main.h	/^BYTE   syslog_switch;$/;"	v
+term_signal	main.c	/^void term_signal(int z)$/;"	f
+timeout	main.h	/^   BYTE timeout;                      \/* Check user timeout *\/$/;"	m	struct:user_t
+to_from	commands.c	/^void to_from(char *buf, struct user_t *user)$/;"	f
+total_share_sem	main.h	/^int    total_share_sem;    \/* Semaphore Id for the shared momry segment above.  *\/$/;"	v
+total_share_shm	main.h	/^int    total_share_shm;    \/* Identifier for the shared memory segment that contains the total share on hub, uploaded to public hub list.  *\/$/;"	v
+trim_string	utils.c	/^int trim_string(char *buf)$/;"	f
+type	main.h	/^   int  type;                         \/* Type of user, types defined above. *\/$/;"	m	struct:user_t
+udp_action	main.c	/^int udp_action(void)$/;"	f
+un_sock_path	main.h	/^char   un_sock_path[MAX_FDP_LEN+1];$/;"	v
+unballow	commands.c	/^int unballow(char *buf, int type)$/;"	f
+up_cmd	commands.c	/^void up_cmd(char *buf, int port)$/;"	f
+upload	main.h	/^BYTE   upload;                      \/* keeps track on when it's time to upload to public hub list *\/$/;"	v
+upload_to_hublist	network.c	/^void upload_to_hublist(int nbrusers)$/;"	f
+uprintf	utils.c	/^void uprintf(struct user_t *user, char *format, ...)$/;"	f
+user	main.h	/^   struct user_t *user;$/;"	m	struct:sock_t	typeref:struct:sock_t::user_t
+user_list	xs_functions.c	/^static char *user_list = NULL;$/;"	v	file:
+user_list_sem	main.h	/^int    user_list_sem;      \/* And a semaphore to control access to it.  *\/ $/;"	v
+user_list_shm_shm	main.h	/^int    user_list_shm_shm;  \/* Identifier for shared memory segment containing the shared memory segment for the user list :)  *\/$/;"	v
+user_t	main.h	/^struct user_t $/;"	s
+users_per_fork	main.h	/^int    users_per_fork;              \/* Users in hub when fork occurs *\/$/;"	v
+val	main.h	/^      int val;                    \/* value for SETVAL *\/$/;"	m	union:my_semun
+validate_key	utils.c	/^int validate_key(char *buf, struct user_t *user)$/;"	f
+validate_nick	commands.c	/^int validate_nick(char *buf, struct user_t *user)$/;"	f
+verbosity	main.h	/^BYTE   verbosity;                   \/* This sets the verbosity of the log file, may vary from 0 to 5 *\/$/;"	v
+version	commands.c	/^int version(char *buf, struct user_t *user)$/;"	f
+version	main.h	/^   char version[MAX_VERSION_LEN+1];   \/* Version of client *\/ $/;"	m	struct:user_t
+welcome_mess	fileio.c	/^int welcome_mess(struct user_t *user)$/;"	f
+working_dir	main.h	/^char   working_dir[MAX_FDP_LEN+1];$/;"	v
+write_config_file	fileio.c	/^int write_config_file(void)$/;"	f
+write_motd	fileio.c	/^int write_motd(char *buf, int overwrite)$/;"	f
+xs_init	xs_functions.c	/^EXTERN_C void xs_init(void)$/;"	f

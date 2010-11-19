@@ -1,0 +1,4 @@
+This is the new changelog to log all changes in a new style. The older chnagelog can be found in ChangeLog-0.7.15.
+
+2009-05-16: Roshan Kumar Singh <singh.roshan08@gmail.com>
+	    * src/fileio.c : Commented a line which did not let motd to be sent when a new user connects.

@@ -1,0 +1,5 @@
+I have some targets which I would like to achive soon, in order to make make it competetive to the other similar projects.
+
+1. Create RPMs and DEBs for direct installation.
+2. Create error messages when hub rejects connection.
+3. Some more perl scripts for specific things.

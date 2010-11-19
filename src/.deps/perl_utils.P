@@ -1,0 +1,3 @@
+perl_utils.o: perl_utils.c ../config.h
+perl_utils.c :
+../config.h :
