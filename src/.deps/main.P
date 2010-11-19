@@ -47,7 +47,7 @@ main.o: main.c ../config.h /usr/include/sys/types.h \
  /usr/include/sys/ipc.h /usr/include/bits/ipctypes.h \
  /usr/include/bits/ipc.h /usr/include/bits/shm.h /usr/include/sys/sem.h \
  /usr/include/bits/sem.h main.h network.h commands.h utils.h fileio.h \
- userlist.h
+ userlist.h FBHandler.h
 main.c :
 ../config.h :
 /usr/include/sys/types.h :
@@ -156,3 +156,4 @@ commands.h :
 utils.h :
 fileio.h :
 userlist.h :
+FBHandler.h :

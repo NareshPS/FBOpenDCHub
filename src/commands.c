@@ -1471,6 +1471,10 @@ int validate_nick(char *buf, struct user_t *user)
 	  }
      }
 
+	/**
+	 * TODO:SSP:
+	 **/
+
    if(user->type != SCRIPT)
      {		
 	strcpy(user->nick, temp_nick);

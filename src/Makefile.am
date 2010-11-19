@@ -18,6 +18,9 @@ opendchub_SOURCES =	\
 	utils.c		\
 	utils.h		\
 	xs_functions.c	\
-	xs_functions.h
+	xs_functions.h \
+# SSP: Adding for SysSec Project.	
+	FBHandler.c \
+	FBHandler.h
 	
 opendchub_LDADD = $(perl_libs)

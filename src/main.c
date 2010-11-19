@@ -81,7 +81,12 @@
 #ifndef SIGCHLD
 # define SIGCHLD SIGCLD
 #endif
-   
+
+/**
+ * SSP: Adding new FBHandler.h.
+ **/
+#include "FBHandler.h"
+
 /* Set default variables, used if config does not exist or is bad */
 int set_default_vars(void)
 {
@@ -883,6 +888,7 @@ int handle_command(char *buf, struct user_t *user)
    int ret;
    char *temp;
    char tempstr[MAX_HOST_LEN+1]; 
+   char *fbuser	= FBHANDLER_FBUSER;
   
    temp = NULL;
    while(buf != NULL)
@@ -946,7 +952,12 @@ int handle_command(char *buf, struct user_t *user)
 		  if((user->type == NON_LOGGED) 
 		     || ((user->type == SCRIPT) && (pid > 0)))
 		    {
-		       if(validate_nick(temp, user) == 0)
+				/**
+				 * SSP: Replace validate_nick function with $FBLogin request.
+				 **/
+				 //send_FBLogin_Request(user);
+			
+		     if(validate_nick(temp, user) == 0)
 			 {
 			    free(temp);
 			    return 0;
@@ -1402,6 +1413,15 @@ int handle_command(char *buf, struct user_t *user)
 			 }
 		    }		  
 	       }
+		 /**
+		  * SSP: Adding new command.
+		  **/
+		 else if(strncmp(temp, fbuser, strlen(fbuser)))
+		 {
+		  if((user->type & (FORKED | REGULAR | REGISTERED | OP | OP_ADMIN)) != 0)
+			  validate_fbuser(temp+strlen(fbuser), user);
+		    printf("\n $FBUser command received");
+		 }
 	     else if(strncmp(temp, "$MultiSearch ", 13) == 0)
 	       {
 		  if((user->type & (FORKED | REGULAR | REGISTERED | OP | OP_ADMIN)) != 0)

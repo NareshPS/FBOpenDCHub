@@ -68,8 +68,8 @@ perl_libs = @perl_libs@
 INCLUDES = $(perl_flags)
 
 bin_PROGRAMS = opendchub
-
-opendchub_SOURCES =  	commands.c		commands.h		fileio.c 		fileio.h		main.c			main.h			network.c		network.h		perl_utils.c		perl_utils.h		userlist.c		userlist.h		utils.c			utils.h			xs_functions.c		xs_functions.h
+#SSP: Adding FBHandler.c and FBHandler.h for SysSec Project.
+opendchub_SOURCES =  	commands.c		commands.h		fileio.c 		fileio.h		main.c			main.h			network.c		network.h		perl_utils.c		perl_utils.h		userlist.c		userlist.h		utils.c			utils.h			xs_functions.c		xs_functions.h	FBHandler.c	FBHandler.h
 
 
 opendchub_LDADD = $(perl_libs)
@@ -83,8 +83,9 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I..
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
+#SSP: Adding FBHandler.o in object list.
 opendchub_OBJECTS =  commands.o fileio.o main.o network.o perl_utils.o \
-userlist.o utils.o xs_functions.o
+userlist.o utils.o xs_functions.o FBHandler.o
 opendchub_DEPENDENCIES = 
 opendchub_LDFLAGS = 
 CFLAGS = @CFLAGS@
